@@ -23,7 +23,7 @@ export const Footer = () => {
       <div>
         {t('footer.date', { date: new Date(), context: getGreetingTime() })}
       </div>
-      <div>{t('footer.date', { date: new Date() })}</div>
+      <div>{t('footer.date', { date: new Date(), context: undefined })}</div>
       <hr />
     </div>
   );
