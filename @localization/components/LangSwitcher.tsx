@@ -1,6 +1,8 @@
 // import App from 'next/app'
 
-import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const languages = {
@@ -9,16 +11,27 @@ const languages = {
 };
 
 export const LangSwitcher = () => {
-  const { t, i18n } = useTranslation();
+  const router = useRouter();
+  const { t, i18n, ready } = useTranslation('components.lang');
   const [count, setCounter] = useState(0);
 
   const handleChange = (lng: string) => {
     i18n.changeLanguage(lng);
     setCounter((p) => p + 1);
   };
+
+  if (!ready) return <></>;
+
   return (
     <div>
       <header className="App-header">
+        <Link href="/" locale={router.locale === 'en' ? 'he' : 'en'}>
+          <button
+            onClick={() => handleChange(router.locale === 'en' ? 'he' : 'en')}
+          >
+            {t('change-locale')}
+          </button>
+        </Link>
         <div>
           {Object.keys(languages).map((lng) => (
             <button
@@ -32,9 +45,9 @@ export const LangSwitcher = () => {
               {languages[lng].nativeName}
             </button>
           ))}
-        </div>{' '}
+        </div>
         <p>
-          <i>{t('lang.counter', { count })}</i>
+          <i>{t('counter', { count })}</i>
         </p>
       </header>
     </div>

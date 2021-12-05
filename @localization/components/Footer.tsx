@@ -15,7 +15,9 @@ const getGreetingTime = (d = DateTime.now()) => {
 };
 
 export const Footer = () => {
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
+
+  if (!ready) return <></>;
 
   return (
     <div className="Footer">

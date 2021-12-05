@@ -8,7 +8,9 @@ type Props = {
 };
 
 export const Layout = ({ children }: Props) => {
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
+
+  if (!ready) return <></>;
 
   return (
     <div>
