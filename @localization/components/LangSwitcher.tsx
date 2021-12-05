@@ -16,8 +16,9 @@ export const LangSwitcher = () => {
   const [count, setCounter] = useState(0);
 
   const handleChange = (lng: string) => {
-    i18n.changeLanguage(lng);
+    // i18n.changeLanguage(lng);
     setCounter((p) => p + 1);
+    router.push('/', '/', { locale: lng });
   };
 
   if (!ready) return <></>;
