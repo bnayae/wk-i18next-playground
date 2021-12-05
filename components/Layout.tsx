@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Footer } from '../@localization';
 
 type Props = {
   children?: ReactNode;
@@ -28,10 +29,7 @@ export const Layout = ({ children }: Props) => {
         </nav>
       </header>
       {children}
-      <footer>
-        <hr />
-        <span>{t('footer.date', { date: new Date() })}</span>
-      </footer>
+      <Footer />
     </div>
   );
 };

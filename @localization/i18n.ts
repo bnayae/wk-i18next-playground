@@ -39,6 +39,10 @@ i18n
           },
           footer: {
             date: 'Today is {{date, DATE_HUGE}}',
+            date_morning:
+              'Good morning! Today is {{date, DATE_HUGE}} | Have a nice day!',
+            date_afternoon: "Good afternoon! It's {{date, DATE_HUGE}}",
+            date_evening: 'Good evening! Today was the {{date, DATE_HUGE}}',
           },
         },
       },
@@ -55,6 +59,9 @@ i18n
           },
           footer: {
             date: 'היום {{date, DATE_HUGE}}',
+            date_morning: 'בוקר טוב {{date, DATE_HUGE}} | שמחה ואושר',
+            date_afternoon: 'אחר צהריים טובים {{date, DATE_HUGE}}',
+            date_evening: 'ערב טוב {{date, DATE_HUGE}}',
           },
         },
       },
