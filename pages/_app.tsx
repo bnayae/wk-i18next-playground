@@ -1,11 +1,34 @@
 // import App from 'next/app'
 
+import { useTranslation } from 'react-i18next';
 import '../@localization/i18n';
 
+const lngs = {
+  en: { nativeName: 'English' },
+  he: { nativeName: 'Hebrew' },
+};
+
 function MyApp({ Component, pageProps }) {
+  const { t, i18n } = useTranslation();
+
   return (
     <div>
-      <h3>----------- HEAD -----------</h3>
+      <header className="App-header">
+        <div>
+          {Object.keys(lngs).map((lng) => (
+            <button
+              key={lng}
+              style={{
+                fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal',
+              }}
+              type="submit"
+              onClick={() => i18n.changeLanguage(lng)}
+            >
+              {lngs[lng].nativeName}
+            </button>
+          ))}
+        </div>
+      </header>
       <Component {...pageProps} />
     </div>
   );

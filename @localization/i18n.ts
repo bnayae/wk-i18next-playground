@@ -25,6 +25,14 @@ i18n
           },
         },
       },
+      he: {
+        translation: {
+          main: {
+            hello: '👋 <1>index.ts</1>  הי',
+            about: 'אודות',
+          },
+        },
+      },
     },
   });
 
