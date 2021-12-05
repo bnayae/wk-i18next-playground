@@ -1,9 +1,11 @@
 // import App from 'next/app'
 
+import '../@localization/i18n';
+
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-      <h1>HEAD</h1>
+      <h3>----------- HEAD -----------</h3>
       <Component {...pageProps} />
     </div>
   );
