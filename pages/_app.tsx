@@ -1,38 +1,36 @@
 // import App from 'next/app'
 
+// see: https://dev.to/adrai/how-to-properly-internationalize-a-react-application-using-i18next-3hdb
+
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { LangSwitcher } from '../@localization';
 import '../@localization/i18n';
+import { Layout } from '../components';
 
 const lngs = {
   en: { nativeName: 'English' },
   he: { nativeName: 'Hebrew' },
 };
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   const { t, i18n } = useTranslation();
 
   return (
     <div>
-      <header className="App-header">
-        <div>
-          {Object.keys(lngs).map((lng) => (
-            <button
-              key={lng}
-              style={{
-                fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal',
-              }}
-              type="submit"
-              onClick={() => i18n.changeLanguage(lng)}
-            >
-              {lngs[lng].nativeName}
-            </button>
-          ))}
-        </div>
-      </header>
-      <Component {...pageProps} />
+      <LangSwitcher />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      <a
+        href="https://dev.to/adrai/how-to-properly-internationalize-a-react-application-using-i18next-3hdb"
+        target="_blank"
+      >
+        credit
+      </a>
     </div>
   );
-}
+};
 
 // Only uncomment this method if you have blocking data requirements for
 // every single page in your application. This disables the ability to

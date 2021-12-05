@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import Layout from '../components/Layout';
 
 const IndexPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout title="Home | Next.js + TypeScript Example">
+    <div>
       <h1>
         <Trans i18nKey="main.hello">
           Hello <code>src/index.ts</code>.
@@ -18,7 +17,7 @@ const IndexPage = () => {
           <a>{t('main.about')}</a>
         </Link>
       </p>
-    </Layout>
+    </div>
   );
 };
 

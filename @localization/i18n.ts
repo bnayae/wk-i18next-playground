@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { DateTime } from 'luxon';
 import { initReactI18next } from 'react-i18next';
 
 i18n
@@ -15,6 +16,14 @@ i18n
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
+      format: (value, format, lng) => {
+        if (value instanceof Date) {
+          return DateTime.fromJSDate(value)
+            .setLocale(lng)
+            .toLocaleString(DateTime[format]);
+        }
+        return value;
+      },
     },
     resources: {
       en: {
@@ -23,6 +32,14 @@ i18n
             hello: 'Hi <1>index.ts</1>  👋',
             about: 'Go to About',
           },
+          lang: {
+            counter_zero: "Language didn't changed",
+            counter_one: 'Changed language just once',
+            counter_other: 'Changed language already {{count}} times',
+          },
+          footer: {
+            date: 'Today is {{date, DATE_HUGE}}',
+          },
         },
       },
       he: {
@@ -30,6 +47,14 @@ i18n
           main: {
             hello: '👋 <1>index.ts</1>  הי',
             about: 'אודות',
+          },
+          lang: {
+            counter_zero: 'לא חל שינוי בשפה',
+            counter_one: 'שפה השתנתה פעם אחת',
+            counter_other: 'פעמים {{count}} השפה השתנתה',
+          },
+          footer: {
+            date: 'היום {{date, DATE_HUGE}}',
           },
         },
       },
