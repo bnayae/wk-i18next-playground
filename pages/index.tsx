@@ -1,29 +1,29 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { LangSwitcher } from '../@localization';
 
 const IndexPage = () => {
-  const { t, ready } = useTranslation(['screens/main']);
-  // const { t, ready } = useTranslation(['components.lang', 'common']);
+  const { t, ready } = useTranslation();
+  // const { t, ready } = useTranslation(['components:lang', 'common']);
+  const [count, setCounter] = useState(0);
 
   if (!ready) return <></>;
 
   return (
     <div>
-      <hr />
-      <LangSwitcher />
-
       <h1>
         <Trans i18nKey="hello">
           Hello <code>src/index.ts</code>.
         </Trans>
       </h1>
-      <h1>{t('desc')}</h1>
+      <button onClick={() => setCounter((p) => p + 1)}>
+        {t('screens.main:counter', { count })}
+      </button>
+      <h1>{t('screens.main:desc')}</h1>
       <p>
         <Link href="/about">
-          <a>{t('about')}</a>
+          <a>{t('common:about')}</a>
         </Link>
       </p>
     </div>
@@ -34,8 +34,9 @@ export const getStaticProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale, [
       'common',
-      'screens/main',
-      'components/lang',
+      'screens.main',
+      'components.lang',
+      'footer',
     ])),
     // Will be passed to the page component as props
   },

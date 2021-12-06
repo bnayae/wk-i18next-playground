@@ -1,0 +1,7 @@
+{
+  "hello": "👋 <1>index.ts</1>  הי",
+  "desc": "בלה בלה בלה...",
+  "counter_zero": "לא נלחץ",
+  "counter_one": "נלחץ פעם בודדת",
+  "counter_other": "נלחץ {{count}} פעמים"
+}

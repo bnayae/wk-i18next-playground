@@ -1,0 +1,7 @@
+{
+  "hello": "Hi <1>index.ts</1>  👋",
+  "desc": "Bla bla bal...",
+  "counter_zero": "Not clicked yet",
+  "counter_one": "Clicked once",
+  "counter_other": "Clicked {{count}} times"
+}

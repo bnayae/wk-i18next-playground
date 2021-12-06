@@ -3,7 +3,6 @@ import App from 'next/app';
 import React from 'react';
 import { LangSwitcher } from '../@localization';
 import { Layout } from '../components';
-import nextI18NextConfig from '../next-i18next.config.js';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -26,4 +25,4 @@ MyApp.getInitialProps = async (appContext) => ({
   ...(await App.getInitialProps(appContext)),
 });
 
-export default appWithTranslation(MyApp, nextI18NextConfig);
+export default appWithTranslation(MyApp);

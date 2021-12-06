@@ -14,13 +14,14 @@ interface ITask {
 }
 
 const AboutPage = ({ data }: IProps) => {
-  const { t, ready } = useTranslation(['common', 'screens/about']);
+  // const { t, ready } = useTranslation();
+  const { t, ready } = useTranslation(['common', 'screens.about']);
 
   if (!ready) return <></>;
 
   return (
     <div>
-      <h1>{t('caption')}</h1>
+      <h1>{t('screens.about:caption')}</h1>
       <p>{data.title}</p>
       <p>
         <Link href="/">
@@ -39,7 +40,12 @@ export async function getServerSideProps({ locale }) {
   // Pass data to the page via props
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['screens/about', 'common'])),
+      ...(await serverSideTranslations(locale, [
+        'common',
+        'screens.about',
+        'components.lang',
+        'footer',
+      ])),
       data,
     },
   };

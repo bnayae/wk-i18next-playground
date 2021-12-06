@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const languages = {
@@ -13,11 +13,9 @@ const languages = {
 export const LangSwitcher = () => {
   const router = useRouter();
   const { t, i18n, ready } = useTranslation('components.lang');
-  const [count, setCounter] = useState(0);
 
   const handleChange = (lng: string) => {
     // i18n.changeLanguage(lng);
-    setCounter((p) => p + 1);
     router.push('/', '/', { locale: lng });
   };
 
@@ -47,9 +45,6 @@ export const LangSwitcher = () => {
             </button>
           ))}
         </div>
-        <p>
-          <i>{t('counter', { count })}</i>
-        </p>
       </header>
     </div>
   );
