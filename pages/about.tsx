@@ -14,7 +14,7 @@ interface ITask {
 }
 
 const AboutPage = ({ data }: IProps) => {
-  const { t, ready } = useTranslation(['common', 'screens.about']);
+  const { t, ready } = useTranslation(['common', 'screens/about']);
 
   if (!ready) return <></>;
 
@@ -39,7 +39,7 @@ export async function getServerSideProps({ locale }) {
   // Pass data to the page via props
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['screens.about'])),
+      ...(await serverSideTranslations(locale, ['screens/about', 'common'])),
       data,
     },
   };

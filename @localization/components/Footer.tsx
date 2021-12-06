@@ -15,17 +15,15 @@ const getGreetingTime = (d = DateTime.now()) => {
 };
 
 export const Footer = () => {
-  const { t, ready } = useTranslation();
+  const { t, ready } = useTranslation('footer');
 
   if (!ready) return <></>;
 
   return (
     <div className="Footer">
       <hr />
-      <div>
-        {t('footer.date', { date: new Date(), context: getGreetingTime() })}
-      </div>
-      <div>{t('footer.date', { date: new Date(), context: undefined })}</div>
+      <div>{t('date', { date: new Date(), context: getGreetingTime() })}</div>
+      <div>{t('date', { date: new Date(), context: undefined })}</div>
       <hr />
     </div>
   );

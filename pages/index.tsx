@@ -5,7 +5,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { LangSwitcher } from '../@localization';
 
 const IndexPage = () => {
-  const { t, ready } = useTranslation(['screens.main']);
+  const { t, ready } = useTranslation(['screens/main']);
   // const { t, ready } = useTranslation(['components.lang', 'common']);
 
   if (!ready) return <></>;
@@ -34,8 +34,8 @@ export const getStaticProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale, [
       'common',
-      'screens.main',
-      'components.lang',
+      'screens/main',
+      'components/lang',
     ])),
     // Will be passed to the page component as props
   },
